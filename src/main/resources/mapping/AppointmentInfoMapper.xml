@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lss.school.mapper.AppointmentInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lss.school.entity.AppointmentInfo" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="coach_id" property="coachId" jdbcType="VARCHAR" />
+    <result column="trainee_id" property="traineeId" jdbcType="VARCHAR" />
+    <result column="appointment_date" property="appointmentDate" jdbcType="DATE" />
+    <result column="time_interval" property="timeInterval" jdbcType="VARCHAR" />
+    <result column="school_id" property="schoolId" jdbcType="VARCHAR" />
+    <result column="backup1" property="backup1" jdbcType="VARCHAR" />
+    <result column="backup2" property="backup2" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="license_type" property="licenseType" jdbcType="VARCHAR" />
+    <result column="stage" property="stage" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMap" type="map" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="coach_id" property="coachId" jdbcType="VARCHAR" />
+    <result column="trainee_id" property="traineeId" jdbcType="VARCHAR" />
+    <result column="appointment_date" property="appointmentDate" jdbcType="DATE" />
+    <result column="time_interval" property="timeInterval" jdbcType="VARCHAR" />
+    <result column="school_id" property="schoolId" jdbcType="VARCHAR" />
+    <result column="backup1" property="backup1" jdbcType="VARCHAR" />
+    <result column="backup2" property="backup2" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="license_type" property="licenseType" jdbcType="VARCHAR" />
+    <result column="stage" property="stage" jdbcType="VARCHAR" />
+
+    <result column="stage_desc" property="stageDesc" jdbcType="VARCHAR" />
+    <result column="license_type_desc" property="licenseTypeDesc" jdbcType="VARCHAR" />
+    <result column="time_interval_desc" property="timeIntervalDesc" jdbcType="VARCHAR" />
+    <result column="coach_name" property="coachName" jdbcType="VARCHAR" />
+    <result column="trainee_name" property="traineeName" jdbcType="VARCHAR" />
+    <result column="trainee_phone" property="traineePhone" jdbcType="VARCHAR" />
+    <result column="coach_phone" property="coachPhone" jdbcType="VARCHAR" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, coach_id, trainee_id, appointment_date, time_interval, school_id, backup1, backup2, 
+    update_time, create_time, license_type, stage
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from appointment_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from appointment_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lss.school.entity.AppointmentInfo" >
+    insert into appointment_info (id, coach_id, trainee_id, 
+      appointment_date, time_interval, school_id, 
+      backup1, backup2, update_time, 
+      create_time, license_type, stage
+      )
+    values (#{id,jdbcType=VARCHAR}, #{coachId,jdbcType=VARCHAR}, #{traineeId,jdbcType=VARCHAR}, 
+      #{appointmentDate,jdbcType=DATE}, #{timeInterval,jdbcType=VARCHAR}, #{schoolId,jdbcType=VARCHAR}, 
+      #{backup1,jdbcType=VARCHAR}, #{backup2,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{licenseType,jdbcType=VARCHAR}, #{stage,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lss.school.entity.AppointmentInfo" >
+    insert into appointment_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="coachId != null" >
+        coach_id,
+      </if>
+      <if test="traineeId != null" >
+        trainee_id,
+      </if>
+      <if test="appointmentDate != null" >
+        appointment_date,
+      </if>
+      <if test="timeInterval != null" >
+        time_interval,
+      </if>
+      <if test="schoolId != null" >
+        school_id,
+      </if>
+      <if test="backup1 != null" >
+        backup1,
+      </if>
+      <if test="backup2 != null" >
+        backup2,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="licenseType != null" >
+        license_type,
+      </if>
+      <if test="stage != null" >
+        stage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="coachId != null" >
+        #{coachId,jdbcType=VARCHAR},
+      </if>
+      <if test="traineeId != null" >
+        #{traineeId,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentDate != null" >
+        #{appointmentDate,jdbcType=DATE},
+      </if>
+      <if test="timeInterval != null" >
+        #{timeInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolId != null" >
+        #{schoolId,jdbcType=VARCHAR},
+      </if>
+      <if test="backup1 != null" >
+        #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null" >
+        #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="licenseType != null" >
+        #{licenseType,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        #{stage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lss.school.entity.AppointmentInfo" >
+    update appointment_info
+    <set >
+      <if test="coachId != null" >
+        coach_id = #{coachId,jdbcType=VARCHAR},
+      </if>
+      <if test="traineeId != null" >
+        trainee_id = #{traineeId,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentDate != null" >
+        appointment_date = #{appointmentDate,jdbcType=DATE},
+      </if>
+      <if test="timeInterval != null" >
+        time_interval = #{timeInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolId != null" >
+        school_id = #{schoolId,jdbcType=VARCHAR},
+      </if>
+      <if test="backup1 != null" >
+        backup1 = #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null" >
+        backup2 = #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="licenseType != null" >
+        license_type = #{licenseType,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        stage = #{stage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lss.school.entity.AppointmentInfo" >
+    update appointment_info
+    set coach_id = #{coachId,jdbcType=VARCHAR},
+      trainee_id = #{traineeId,jdbcType=VARCHAR},
+      appointment_date = #{appointmentDate,jdbcType=DATE},
+      time_interval = #{timeInterval,jdbcType=VARCHAR},
+      school_id = #{schoolId,jdbcType=VARCHAR},
+      backup1 = #{backup1,jdbcType=VARCHAR},
+      backup2 = #{backup2,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      license_type = #{licenseType,jdbcType=VARCHAR},
+      stage = #{stage,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="findByConditions" resultMap="ResultMap" resultType="map">
+
+   SELECT
+	a.*,
+u1.user_name coach_name,
+u1.user_phone coach_phone,
+u2.user_name trainee_name,
+u2.user_phone trainee_phone,
+t1.small_name time_interval_desc,
+t2.small_name license_type_desc,
+t3.small_name stage_desc
+FROM
+	appointment_info a
+LEFT JOIN user_info u1 ON a.coach_id = u1.id
+LEFT JOIN user_info u2 ON a.trainee_id = u2.id
+LEFT JOIN type_info t1 ON a.time_interval = t1.small_code AND t1.type_code like 'sd%'
+LEFT JOIN type_info t2 ON a.license_type = t2.small_code AND t2.type_code = 'jzlx'
+LEFT JOIN type_info t3 ON a.stage = t3.small_code AND t3.type_code ='kmlb'
+    where 1=1
+    <if test="licenseType != null and  licenseType != ''" >
+      and a.license_type =  #{licenseType}
+    </if>
+
+    <if test="timeInterval != null and  timeInterval != ''" >
+      and a.time_interval =  #{timeInterval}
+    </if>
+
+    <if test="stage != null and  stage != ''" >
+      and a.stage =  #{stage}
+    </if>
+    <if test="AppointmentDate != null" >
+      and a.appointment_date =  #{AppointmentDate}
+    </if>
+    <if test="schoolId != null" >
+      and a.school_id =  #{schoolId}
+    </if>
+
+    <if test="key != null and  key != ''" >
+      and (u1.user_name like '%${key}%' or u1.user_name like '%${key}%')
+    </if>
+     order by a.appointment_date desc
+
+  </select>
+
+  <delete id="deleteByIds">
+    delete FROM appointment_info WHERE  id in (
+    <foreach collection="ids" item="id" separator=",">
+      #{id}
+    </foreach>
+    )
+  </delete>
+</mapper>

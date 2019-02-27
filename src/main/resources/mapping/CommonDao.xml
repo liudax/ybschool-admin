@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lss.school.mapper.CommonDao" >
+
+  <select id="findByNativeSql" resultType="Map">
+    ${querySql}
+  </select>
+
+  <update id="updateByNativeSql">
+    ${updateSql}
+  </update>
+
+  <delete id="deleteByNativeSql">
+    ${deleteSql}
+  </delete>
+
+</mapper>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>预约信息</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../../static/css/font.css">
+    <link rel="stylesheet" href="../../../static/css/weadmin.css">
+    <script src="../../../lib/layui/layui.js" charset="utf-8"></script>
+</head>
+
+<body>
+<div class="weadmin-nav">
+    <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">业务管理</a>
+        <a><cite>预约信息</cite></a>
+    </span>
+    <a class="layui-btn layui-btn-sm" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">&#x1002;</i>
+    </a>
+</div>
+
+<div class="weadmin-body">
+    <div class="weadmin-block demoTable">
+        <button class="layui-btn  del_btn" ><i class="layui-icon">&#xe640;</i>批量删除</button>
+        <div class="layui-inline  fr">
+            <form layui-filter="search-form" class="layui-form layui-col-md12 we-search" action="">
+                <div class="layui-input-inline">
+                    <select id="licenseType"  name="licenseType">
+                        <option value="">预约类型</option>
+                        <option value="101">手动挡</option>
+                        <option value="102">自动挡</option>
+                    </select>
+                </div>
+                <!--<div class="layui-input-inline">-->
+                    <!--<input class="layui-input" placeholder="预约日期" name="appointmentDate" id="appointmentDate">-->
+                <!--</div>-->
+                <div class="layui-input-inline">
+                    <select id="stage"  name="stage">
+                        <option value="">预约科目</option>
+                        <option value="102">科目二</option>
+                        <option value="103">科目三</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" name="appointmentDate" id="appointmentDate" placeholder="请选择预约时间" >
+                </div>
+                <div class="layui-inline">
+                    <input type="text" name="key" placeholder="搜索学员或者教练姓名" autocomplete="off" class="layui-input">
+                </div>
+                <button class="layui-btn" lay-submit=""  lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
+            </form>
+        </div>
+
+    </div>
+    <table class="layui-table" lay-filter="appointment_table_filter" id="appointmentList"></table>
+    <!--操作-->
+    <script type="text/html" id="listBar">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+    </script>
+</div>
+<script type="text/javascript" src="list.js"></script>
+</body>
+
+</html>

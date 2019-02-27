@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lss.school.mapper.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lss.school.entity.UserInfo" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="wx_open_id" property="wxOpenId" jdbcType="VARCHAR" />
+    <result column="user_role" property="userRole" jdbcType="VARCHAR" />
+    <result column="school_id" property="schoolId" jdbcType="VARCHAR" />
+    <result column="stage" property="stage" jdbcType="VARCHAR" />
+    <result column="license_type" property="licenseType" jdbcType="VARCHAR" />
+    <result column="is_enabled" property="isEnabled" jdbcType="VARCHAR" />
+    <result column="backup1" property="backup1" jdbcType="VARCHAR" />
+    <result column="backup2" property="backup2" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMap" type="map" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="wx_open_id" property="wxOpenId" jdbcType="VARCHAR" />
+    <result column="school_id" property="schoolId" jdbcType="VARCHAR" />
+    <result column="stage" property="stage" jdbcType="VARCHAR" />
+    <result column="license_type" property="licenseType" jdbcType="VARCHAR" />
+    <result column="is_enabled" property="isEnabled" jdbcType="VARCHAR" />
+    <result column="backup1" property="backup1" jdbcType="VARCHAR" />
+    <result column="backup2" property="backup2" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="user_role" property="userRole" jdbcType="VARCHAR" />
+
+    <result column="sexDesc" property="sexDesc" jdbcType="TIMESTAMP" />
+    <result column="licenseTypeDesc" property="licenseTypeDesc" jdbcType="TIMESTAMP" />
+    <result column="isEnabledDesc" property="isEnabledDesc" jdbcType="TIMESTAMP" />
+    <result column="isEnabledDesc" property="isEnabledDesc" jdbcType="TIMESTAMP" />
+    <result column="backup1Desc" property="backup1Desc" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_name, login_name, password, sex, user_phone, wx_open_id, user_role, school_id, 
+    stage, license_type, is_enabled, backup1, backup2, update_time, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lss.school.entity.UserInfo" >
+    insert into user_info (id, user_name, login_name, 
+      password, sex, user_phone, 
+      wx_open_id, user_role, school_id, 
+      stage, license_type, is_enabled, 
+      backup1, backup2, update_time, 
+      create_time)
+    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
+      #{wxOpenId,jdbcType=VARCHAR}, #{userRole,jdbcType=VARCHAR}, #{schoolId,jdbcType=VARCHAR}, 
+      #{stage,jdbcType=VARCHAR}, #{licenseType,jdbcType=VARCHAR}, #{isEnabled,jdbcType=VARCHAR}, 
+      #{backup1,jdbcType=VARCHAR}, #{backup2,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lss.school.entity.UserInfo" >
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="userPhone != null" >
+        user_phone,
+      </if>
+      <if test="wxOpenId != null" >
+        wx_open_id,
+      </if>
+      <if test="userRole != null" >
+        user_role,
+      </if>
+      <if test="schoolId != null" >
+        school_id,
+      </if>
+      <if test="stage != null" >
+        stage,
+      </if>
+      <if test="licenseType != null" >
+        license_type,
+      </if>
+      <if test="isEnabled != null" >
+        is_enabled,
+      </if>
+      <if test="backup1 != null" >
+        backup1,
+      </if>
+      <if test="backup2 != null" >
+        backup2,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenId != null" >
+        #{wxOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null" >
+        #{userRole,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolId != null" >
+        #{schoolId,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseType != null" >
+        #{licenseType,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabled != null" >
+        #{isEnabled,jdbcType=VARCHAR},
+      </if>
+      <if test="backup1 != null" >
+        #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null" >
+        #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lss.school.entity.UserInfo" >
+    update user_info
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenId != null" >
+        wx_open_id = #{wxOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null" >
+        user_role = #{userRole,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolId != null" >
+        school_id = #{schoolId,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        stage = #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseType != null" >
+        license_type = #{licenseType,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabled != null" >
+        is_enabled = #{isEnabled,jdbcType=VARCHAR},
+      </if>
+      <if test="backup1 != null" >
+        backup1 = #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null" >
+        backup2 = #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lss.school.entity.UserInfo" >
+    update user_info
+    set user_name = #{userName,jdbcType=VARCHAR},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      wx_open_id = #{wxOpenId,jdbcType=VARCHAR},
+      user_role = #{userRole,jdbcType=VARCHAR},
+      school_id = #{schoolId,jdbcType=VARCHAR},
+      stage = #{stage,jdbcType=VARCHAR},
+      license_type = #{licenseType,jdbcType=VARCHAR},
+      is_enabled = #{isEnabled,jdbcType=VARCHAR},
+      backup1 = #{backup1,jdbcType=VARCHAR},
+      backup2 = #{backup2,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="findUserByLoginNameAndPassword" resultType="UserInfo">
+    SELECT  * FROM  user_info where login_name = #{loginName} AND  password = #{password}
+  </select>
+
+  <select id="findByFields" resultMap="ResultMap" resultType="map">
+    SELECT a.* ,b.small_name AS stageDesc,
+    c.small_name AS  licenseTypeDesc,
+    d.small_name AS isEnabledDesc,
+    e.small_name AS backup1Desc,
+    f.small_name AS  sexDesc
+    FROM user_info a
+    LEFT JOIN type_info b ON a.stage = b.small_code  AND  b.type_code = 'kmlb'
+    LEFT JOIN type_info c ON a.license_type = c.small_code  AND  c.type_code = 'jzlx'
+    LEFT JOIN type_info d ON a.is_enabled = d.small_code  AND  d.type_code = 'sfqy'
+    LEFT JOIN type_info e ON a.backup1 = e.small_code  AND  e.type_code = 'jslx'
+    LEFT JOIN type_info f ON a.sex = f.small_code  AND  f.type_code = 'xb'
+    where 1=1
+    <if test="userName != null and  userName != ''" >
+      and a.user_name LIKE  '%${userName}%'
+    </if>
+    <if test="userRole != null and  userRole != ''" >
+      and a.user_role LIKE  '%${userRole}%'
+    </if>
+    <if test="loginName != null and  loginName != ''" >
+      and a.login_name = #{loginName,jdbcType=VARCHAR}
+    </if>
+    <if test="password != null and  password != ''" >
+      and  a.password = #{password,jdbcType=VARCHAR}
+    </if>
+    <if test="sex != null and  sex != ''" >
+      and a.sex = #{sex,jdbcType=VARCHAR}
+    </if>
+    <if test="userPhone != null and  userPhone != ''" >
+      and a.user_phone = #{userPhone,jdbcType=VARCHAR}
+    </if>
+    <if test="wxOpenId != null and  wxOpenId != ''" >
+      and a.wx_open_id = #{wxOpenId,jdbcType=VARCHAR}
+    </if>
+    <if test="schoolId != null and  schoolId != ''" >
+      and a.school_id = #{schoolId,jdbcType=VARCHAR}
+    </if>
+    <if test="stage != null and  stage != ''" >
+      and a.stage = #{stage,jdbcType=VARCHAR}
+    </if>
+    <if test="licenseType != null and  licenseType != ''" >
+      and a.license_type = #{licenseType,jdbcType=VARCHAR}
+    </if>
+    <if test="isEnabled != null and  isEnabled != ''" >
+      and a.is_enabled = #{isEnabled,jdbcType=VARCHAR}
+    </if>
+    <if test="backup1 != null and  backup1 != ''" >
+      and a.backup1 = #{backup1,jdbcType=VARCHAR}
+    </if>
+    <if test="backup2 != null and  backup2 != ''" >
+      and a.backup2 = #{backup2,jdbcType=VARCHAR}
+    </if>
+    <if test="updateTime != null  and  updateTime != ''" >
+      and a.update_time = #{updateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="createTime != null  and  createTime != ''" >
+      and a.create_time = #{createTime,jdbcType=TIMESTAMP}
+    </if>
+
+  </select>
+
+  <update id="updateState" >
+    update user_info SET is_enabled = #{state} WHERE id in (
+    <foreach collection="ids" item="id" separator=",">
+      #{id}
+    </foreach>
+    )
+  </update>
+
+  <update id="updateStage" >
+    update user_info SET stage = #{stage} WHERE id in (
+    <foreach collection="ids" item="id" separator=",">
+      #{id}
+    </foreach>
+    )
+  </update>
+
+  <delete id="deleteByIds">
+    delete FROM user_info WHERE  id in (
+    <foreach collection="ids" item="id" separator=",">
+      #{id}
+    </foreach>
+    )
+  </delete>
+</mapper>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lss.school.mapper.TypeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lss.school.entity.TypeInfo" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="type_code" property="typeCode" jdbcType="VARCHAR" />
+    <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+    <result column="small_code" property="smallCode" jdbcType="VARCHAR" />
+    <result column="small_name" property="smallName" jdbcType="VARCHAR" />
+    <result column="backup1" property="backup1" jdbcType="VARCHAR" />
+    <result column="backup2" property="backup2" jdbcType="VARCHAR" />
+    <result column="school_id" property="schoolId" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type_code, type_name, small_code, small_name, backup1, backup2, school_id, update_time, 
+    create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from type_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from type_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lss.school.entity.TypeInfo" >
+    insert into type_info (id, type_code, type_name, 
+      small_code, small_name, backup1, 
+      backup2, school_id, update_time, 
+      create_time)
+    values (#{id,jdbcType=VARCHAR}, #{typeCode,jdbcType=VARCHAR}, #{typeName,jdbcType=VARCHAR}, 
+      #{smallCode,jdbcType=VARCHAR}, #{smallName,jdbcType=VARCHAR}, #{backup1,jdbcType=VARCHAR}, 
+      #{backup2,jdbcType=VARCHAR}, #{schoolId,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lss.school.entity.TypeInfo" >
+    insert into type_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="typeCode != null" >
+        type_code,
+      </if>
+      <if test="typeName != null" >
+        type_name,
+      </if>
+      <if test="smallCode != null" >
+        small_code,
+      </if>
+      <if test="smallName != null" >
+        small_name,
+      </if>
+      <if test="backup1 != null" >
+        backup1,
+      </if>
+      <if test="backup2 != null" >
+        backup2,
+      </if>
+      <if test="schoolId != null" >
+        school_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null" >
+        #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null" >
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="smallCode != null" >
+        #{smallCode,jdbcType=VARCHAR},
+      </if>
+      <if test="smallName != null" >
+        #{smallName,jdbcType=VARCHAR},
+      </if>
+      <if test="backup1 != null" >
+        #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null" >
+        #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolId != null" >
+        #{schoolId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lss.school.entity.TypeInfo" >
+    update type_info
+    <set >
+      <if test="typeCode != null" >
+        type_code = #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null" >
+        type_name = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="smallCode != null" >
+        small_code = #{smallCode,jdbcType=VARCHAR},
+      </if>
+      <if test="smallName != null" >
+        small_name = #{smallName,jdbcType=VARCHAR},
+      </if>
+      <if test="backup1 != null" >
+        backup1 = #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null" >
+        backup2 = #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolId != null" >
+        school_id = #{schoolId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lss.school.entity.TypeInfo" >
+    update type_info
+    set type_code = #{typeCode,jdbcType=VARCHAR},
+      type_name = #{typeName,jdbcType=VARCHAR},
+      small_code = #{smallCode,jdbcType=VARCHAR},
+      small_name = #{smallName,jdbcType=VARCHAR},
+      backup1 = #{backup1,jdbcType=VARCHAR},
+      backup2 = #{backup2,jdbcType=VARCHAR},
+      school_id = #{schoolId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByConditions" resultType="TypeInfo">
+
+    SELECT * FROM type_info
+    <if test="key != null"> WHERE  type_code like '%${key}%' OR  type_name like '%${key}%'</if>
+    ORDER BY  type_code,small_code
+  </select>
+</mapper>
